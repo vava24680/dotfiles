@@ -1,0 +1,191 @@
+" Set nocompatible mode
+set nocompatible
+
+" 1. Third-party plugins
+"" 1.1 vim-plug automatic installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+"" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'guns/xterm-color-table.vim'
+
+""" 1.1 Theme Plugins
+Plug 'morhetz/gruvbox'
+
+""" 1.2 Display Plugins
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+    \ 'colorscheme': 'one',
+    \ 'active': {
+    \   'left': [ ['mode', 'paste'], ['gitinfo', 'readonly', 'filename', 'modified'] ],
+    \   'right': [ ['ColumnInfo'], ['LineNumberPart'], ['filetype', 'fileencoding', 'fileformat'] ],
+    \ },
+    \ 'inactive': {
+    \   'left': [ ['mode', 'filename'] ],
+    \   'right': [ ['ColumnInfo'], ['LineNumberPart'], ['filetype', 'fileencoding', 'fileformat'] ],
+    \ },
+    \ 'component': {
+    \   'LineNumberPart': '%3p%% %l/%L',
+    \   'ColumnInfo': 'Col: %-v',
+    \   'WarnMsg': '%#warningmsg#',
+    \ },
+    \ 'component_function': {
+    \   'gitinfo': 'FugitiveHead',
+    \ },
+\ }
+Plug 'Yggdroot/indentLine'
+let g:indentLine_enabled = 1
+let g:indentLine_char = '|'
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
+let g:indentLine_setColors = 0
+
+""" 1.3 Git-related Plugins
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+""" 1.4 Search Plugins
+Plug 'rking/ag.vim'
+Plug 'preservim/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
+Plug 'vim-syntastic/syntastic'
+Plug 'Raimondi/delimitMate'
+let g:delimitMate_matchpairs = "(:),[:],{:}"
+call plug#end()
+
+
+" NERDTree hot-key binding
+map <F6> :NERDTreeToggle<CR>
+
+" 2. General Settings
+set nocompatible          " Disable compatible mode
+
+"" 2.1 Editing
+set confirm               " Enable showing confirmation message
+set backspace=indent,eol,start              " Control what backspace key does
+
+"" 2.2 Encoding
+set encoding=utf-8        " Set vim intenal encoding to UTF-8
+set termencoding=utf-8    " Set encoding for showing contents on terminals to UTF-8"
+scriptencoding utf-8      " Set encoding for scripts to UTF-8
+
+"" 2.3 Colors
+set background=dark       " Dark background
+set t_Co=256              " Enable 256 color mode
+colorscheme gruvbox       " Using gruvbox colorscheme
+
+"" 2.4 Display
+syntax enable
+" Add highlight group 'InvisibleCharacters'
+highlight InvisibleCharacters cterm=bold ctermfg=244
+" Link group 'NonText' to group 'InvisibleCharacters'
+highlight! link NonText InvisibleCharacters
+" Link group 'SpecialKey' to group 'InvisibleCharacters'
+highlight! link SpecialKey InvisibleCharacters
+highlight Cursorline term=bold cterm=bold ctermbg=237
+highlight CursorLineNr term=bold cterm=bold ctermfg=9 ctermbg=none
+highlight LineNr ctermfg=82
+set cursorline            " Enable highlighting current line
+set number                " Enable showing line number
+set list                  " Enable showing invisible characters like tabs, eol
+set listchars=eol:¬,tab:¤·,trail:·          " Set other visible characters for invisible characters
+" set showmatch             " Enable showing the matched brackets when inserting
+
+"" 2.5 Backup
+set history=60            " Keep 60 lines of previous typed command
+
+"" 2.6 Search
+set hlsearch              " Highlight in searching
+set ignorecase            " Ingore case in searching
+set incsearch             " Enable incremental searching
+set smartcase             " Enable case-insensitive searching when search pattern are all lower-case,
+                          " case-sensitive otherwise
+set magic                 " Enable searching with regex
+
+"" 2.7 Status line general settings
+""" More status line custom settings please refer to part 1.2
+set laststatus=2          " Enable showing status line
+
+"" 2.8 Windows, Tabs, Buffers
+set splitright            " Make vim put the new vertically splited window to the right of the current window
+set splitbelow            " Make vim put the new horizontally splited window undet the current window
+
+"" 2.9 Tab page line settings
+set showtabline=2
+
+"" 2.10 Tab and spaces
+""" I prefer the indentation without tabs, 2 spaces is the default setting
+""" I keep the option 'tabstop' to original value,
+"""   reason: https://vim.fandom.com/wiki/Indenting_source_code#Indentation_without_hard_tabs
+set expandtab             " Use the appropriate number of spaces when press the <TAB> key
+set shiftwidth=2          " Insert 2 spaces when using each step of (auto)indent
+set softtabstop=2         " Insert 2 spaces when pressing the <TAB> key
+set smarttab
+
+"" 2.11 Indentation
+set autoindent            " Copy the indentation of the current line to next inserted line
+set smartindent           " Do smart autoindenting when starting a new line
+
+"" 2.12 Files
+set autoread              " Auto reload the file when it is changed outside
+filetype on               " Enable filetype detection
+filetype indent on        " Enable filetype-specific indenting
+filetype plugin on        " Enable filetype-specific plugins load
+
+"" 2.13 User interface
+set mouse=a               " Enable the use of mouse
+set scrolloff=8           " Keep 8 lines above ( below ) the cursor when scrolling up ( down )
+
+"" 2.14 Word wrap
+""" For more information about the breaking information, please refer to 'breakat' option
+set linebreak             " Make vim break lines without breaking words
+set showbreak=->          " Make vim show some characters at where the lines are wrapped
+set wrap                  " Enable breaking long lines to multiple lines
+
+"" 2.15 Warnings
+set noerrorbells          " Disable bell for error messages
+set novisualbell          " Disable visual bells for error messages
+set t_vb=                 " Disable visual bells
+
+" 2. Keybindings
+"" 2.1 Leader key
+let mapleader=","
+
+"" 2.2 Keybindings for moving between windows
+noremap <silent> <leader>h <Esc>:wincmd h<CR>
+noremap <silent> <leader>j <Esc>:wincmd j<CR>
+noremap <silent> <leader>k <Esc>:wincmd k<CR>
+noremap <silent> <leader>l <Esc>:wincmd l<CR>
+noremap <silent> <leader><Left>  <Esc>:wincmd h<CR>
+noremap <silent> <leader><Down>  <Esc>:wincmd j<CR>
+noremap <silent> <leader><Up>    <Esc>:wincmd k<CR>
+noremap <silent> <leader><Right> <Esc>:wincmd l<CR>
+
+"" 2.3 Keybindings for tabs operation
+noremap <silent> tn            <Esc>:tabnext<CR>
+noremap <silent> tp            <Esc>:tabprevious<CR>
+noremap <silent> tN            <Esc>:tabnew<CR>
+noremap <silent> tC            <Esc>:tabclose<CR>
+noremap <silent> tf            <Esc>:tabfirst<CR>
+noremap <silent> tl            <Esc>:tablast<CR>
+
+" "" 2.4 Keybindings for spliting windows
+noremap <silent> sh            <Esc>:split<CR>
+noremap <silent> sv            <Esc>:vsplit<CR>
+noremap <silent> <C-W>vn       <Esc>:vnew<CR>
+
+"" 2.6 Keybindings for editing/reloading vimrc
+nnoremap <leader>ev            :tabedit $MYVIMRC<CR> :echo "After editing, press ',sv' to reload"<CR>
+nnoremap <leader>sv            :source $MYVIMRC<CR>
+
+"" 2.7 Keybindings for enabling/disabling editing
+nnoremap <silent> <leader>ee   :set modifiable& write&<CR>
+nnoremap <silent> <leader>de   :set nomodifiable nowrite<CR>
+
+" 3. Configurations
+"" 3.1 Autocmds
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4
