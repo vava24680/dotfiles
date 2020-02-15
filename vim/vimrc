@@ -49,7 +49,18 @@ Plug 'airblade/vim-gitgutter'
 
 """ 1.4 Search Plugins
 Plug 'rking/ag.vim'
+
+"""" nerdtree plugin, file system explorer
 Plug 'preservim/nerdtree'
+map     <silent> <F6>        :NERDTreeToggle<CR>:wincmd p<CR>:NERDTreeFind<CR>
+noremap <silent> <leader>nts :NERDTreeFind<CR>
+noremap <silent> <leader>ntv :NERDTreeToggleVCS<CR>:wincmd p<CR>:NERDTreeFind<CR>
+noremap <silent> <leader>nc  :NERDTreeClose<CR>
+
+let NERDTreeAutoDeleteBuffer = 1       " Delete the buffer of the file which is just deleted with NERDTree.
+let NERDTreeCaseSensitiveSort = 1      " Enable case-sensitive filenames sorting in NERDTree explorer.
+let NERDTreeShowLineNumbers = 1        " Enable showing line numbers in NERDTree explorer
+
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
@@ -57,9 +68,6 @@ Plug 'Raimondi/delimitMate'
 let g:delimitMate_matchpairs = "(:),[:],{:}"
 call plug#end()
 
-
-" NERDTree hot-key binding
-map <F6> :NERDTreeToggle<CR>
 
 " 2. General Settings
 set nocompatible          " Disable compatible mode
