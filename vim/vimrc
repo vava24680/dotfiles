@@ -11,14 +11,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-"" Plugins
+
+"" 1.2 Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'guns/xterm-color-table.vim'
 
-""" 1.1 Theme Plugins
+""" 1.2.1 Theme Plugins
 Plug 'morhetz/gruvbox'
 
-""" 1.2 Display Plugins
+""" 1.2.2 Display Plugins
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
     \ 'colorscheme': 'one',
@@ -46,11 +47,11 @@ let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 let g:indentLine_setColors = 0
 
-""" 1.3 Git-related Plugins
+""" 1.2.3 Git-related Plugins
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-""" 1.4 Search Plugins
+""" 1.2.4 Search Plugins
 Plug 'rking/ag.vim'
 
 """" nerdtree plugin, file system explorer
