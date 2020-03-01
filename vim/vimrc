@@ -52,14 +52,20 @@ Plug 'rking/ag.vim'
 
 """" nerdtree plugin, file system explorer
 Plug 'preservim/nerdtree'
-map     <silent> <F6>        :NERDTreeToggle<CR>:wincmd p<CR>:NERDTreeFind<CR>
-noremap <silent> <leader>nts :NERDTreeFind<CR>
-noremap <silent> <leader>ntv :NERDTreeToggleVCS<CR>:wincmd p<CR>:NERDTreeFind<CR>
-noremap <silent> <leader>nc  :NERDTreeClose<CR>
+map     <silent> <F6>         :NERDTreeToggle<CR>
+noremap <silent> <leader>ntf  :NERDTreeFind<CR>
+noremap <silent> <leader>ntv  :NERDTreeToggleVCS<CR>:wincmd p<CR>:NERDTreeFind<CR>
+noremap <silent> <leader>ntc  :NERDTreeClose<CR>
 
-let NERDTreeAutoDeleteBuffer = 1       " Delete the buffer of the file which is just deleted with NERDTree.
-let NERDTreeCaseSensitiveSort = 1      " Enable case-sensitive filenames sorting in NERDTree explorer.
-let NERDTreeShowLineNumbers = 1        " Enable showing line numbers in NERDTree explorer
+let NERDTreeAutoDeleteBuffer  = 1       " Delete the buffer of the file which is just deleted with NERDTree.
+let NERDTreeBookmarksSort     = 2       " Enable sorting bookmarks list in case-sensitive order
+let NERDTreeCaseSensitiveSort = 1       " Enable case-sensitive filenames sorting in NERDTree explorer.
+let NERDTreeIgnore            = ['\.swp$', '\.pyc$'] " Make NERDTree filter out some temporary files
+let NERDTreeNaturalSort       = 1       " Enable natural sorting order
+let NERDTreeShowBookmarks     = 1       " Enable showing bookmarks
+let NERDTreeShowHidden        = 1       " Show hidden files by default
+let NERDTreeShowLineNumbers   = 1       " Enable showing line numbers in NERDTree explorer
+let NERDTreeWinSize           = 33      " Set the NERDTree window size
 
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
