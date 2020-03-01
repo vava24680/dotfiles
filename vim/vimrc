@@ -1,5 +1,8 @@
-" Set nocompatible mode
+" 0. Global Settings
+"" Set nocompatible mode
 set nocompatible
+"" Set leader key
+let mapleader=","
 
 " 1. Third-party plugins
 "" 1.1 vim-plug automatic installation
@@ -166,10 +169,7 @@ set novisualbell          " Disable visual bells for error messages
 set t_vb=                 " Disable visual bells
 
 " 2. Keybindings
-"" 2.1 Leader key
-let mapleader=","
-
-"" 2.2 Keybindings for moving between windows
+"" 2.1 Keybindings for moving between windows
 noremap <silent> <leader>h <Esc>:wincmd h<CR>
 noremap <silent> <leader>j <Esc>:wincmd j<CR>
 noremap <silent> <leader>k <Esc>:wincmd k<CR>
@@ -179,7 +179,7 @@ noremap <silent> <leader><Down>  <Esc>:wincmd j<CR>
 noremap <silent> <leader><Up>    <Esc>:wincmd k<CR>
 noremap <silent> <leader><Right> <Esc>:wincmd l<CR>
 
-"" 2.3 Keybindings for tabs operation
+"" 2.2 Keybindings for tabs operation
 noremap <silent> tn            <Esc>:tabnext<CR>
 noremap <silent> tp            <Esc>:tabprevious<CR>
 noremap <silent> tN            <Esc>:tabnew<CR>
@@ -187,16 +187,16 @@ noremap <silent> tC            <Esc>:tabclose<CR>
 noremap <silent> tf            <Esc>:tabfirst<CR>
 noremap <silent> tl            <Esc>:tablast<CR>
 
-" "" 2.4 Keybindings for spliting windows
+"" 2.3 Keybindings for spliting windows
 noremap <silent> sh            <Esc>:split<CR>
 noremap <silent> sv            <Esc>:vsplit<CR>
 noremap <silent> <C-W>vn       <Esc>:vnew<CR>
 
-"" 2.6 Keybindings for editing/reloading vimrc
+"" 2.4 Keybindings for editing/reloading vimrc
 nnoremap <leader>ev            :tabedit $MYVIMRC<CR> :echo "After editing, press ',sv' to reload"<CR>
 nnoremap <leader>sv            :source $MYVIMRC<CR>
 
-"" 2.7 Keybindings for enabling/disabling editing
+"" 2.5 Keybindings for enabling/disabling editing
 nnoremap <silent> <leader>ee   :set modifiable& write&<CR>
 nnoremap <silent> <leader>de   :set nomodifiable nowrite<CR>
 
