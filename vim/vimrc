@@ -199,8 +199,8 @@ nnoremap <leader>ev            :tabedit $MYVIMRC<CR> :echo "After editing, press
 nnoremap <leader>sv            :source $MYVIMRC<CR>
 
 "" 2.5 Keybindings for enabling/disabling editing
-nnoremap <silent> <leader>ee   :set modifiable& write&<CR>
-nnoremap <silent> <leader>de   :set nomodifiable nowrite<CR>
+nnoremap <silent> <leader>ee   :set modifiable&<CR>
+nnoremap <silent> <leader>de   :set nomodifiable<CR>
 
 " 3. Configurations
 "" 3.1 Autocmds
