@@ -202,6 +202,9 @@ nnoremap <leader>sv            :source $MYVIMRC<CR>
 nnoremap <silent> <leader>ee   :set modifiable&<CR>
 nnoremap <silent> <leader>de   :set nomodifiable<CR>
 
+"" 2.6 Keybinding for enabling/disabling relative number
+noremap <silent> <leader>rn   :setlocal relativenumber!<CR>
+
 " 3. Configurations
 "" 3.1 Autocmds
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4
