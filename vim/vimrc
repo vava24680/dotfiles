@@ -180,6 +180,10 @@ noremap <silent> <leader><Left>  <Esc>:wincmd h<CR>
 noremap <silent> <leader><Down>  <Esc>:wincmd j<CR>
 noremap <silent> <leader><Up>    <Esc>:wincmd k<CR>
 noremap <silent> <leader><Right> <Esc>:wincmd l<CR>
+noremap <silent> <C-W><Left>     :wincmd h<CR>
+noremap <silent> <C-W><Down>     :wincmd j<CR>
+noremap <silent> <C-W><Up>     :wincmd k<CR>
+noremap <silent> <C-W><Right>     :wincmd l<CR>
 
 "" 2.2 Keybindings for tabs operation
 noremap <silent> tn            <Esc>:tabnext<CR>
