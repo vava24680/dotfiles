@@ -24,7 +24,7 @@ Plug 'itchyny/lightline.vim'
 let g:lightline = {
     \ 'colorscheme': 'one',
     \ 'active': {
-    \   'left': [ ['mode', 'paste'], ['gitinfo', 'readonly', 'filename', 'modified'] ],
+    \   'left': [ ['mode', 'paste'], ['gitinfo', 'readonly', 'filename', 'modified', 'eol'] ],
     \   'right': [ ['ColumnInfo'], ['LineNumberPart'], ['filetype', 'fileencoding', 'fileformat'] ],
     \ },
     \ 'inactive': {
@@ -38,8 +38,13 @@ let g:lightline = {
     \ },
     \ 'component_function': {
     \   'gitinfo': 'FugitiveHead',
+    \   'eol': 'DetermineEOL'
     \ },
 \ }
+
+function! DetermineEOL()
+  return &endofline ? '' : '[noeol]'
+endfunction
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_bufTypeExclude = ['help']
