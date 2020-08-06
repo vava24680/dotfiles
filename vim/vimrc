@@ -80,6 +80,17 @@ let NERDTreeWinSize           = 33      " Set the NERDTree window size
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
+if has('nvim')
+  " In neovim, the lightline can't be updated manually after the active
+  " window changes from LocationList to the window that render the file.
+  " So this hook function needs to be declared so the lightline can be
+  " updated.
+  " Ref: https://tinyurl.com/y3n2hk96
+  function! SyntasticCheckHook(errors)
+    call lightline#update()
+  endfunction
+endif
+
 Plug 'Raimondi/delimitMate'
 let g:delimitMate_matchpairs = "(:),[:],{:}"
 call plug#end()
