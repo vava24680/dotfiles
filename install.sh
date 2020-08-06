@@ -39,12 +39,12 @@ unlink_file() {
 }
 
 install_dotfiles() {
-  if [ "$#" != "2" -a "$#" != "3" ]; then
+  if [ "$#" != "2" -a "$#" != "3" -a "$#" != "4" ]; then
     echo "Wrong number of arguments"
     exit 1
   fi
 
-  if [ -z $3 ]; then
+  if [ -z "$3" ]; then
     DESTINATION_DIR=${HOME}
   else
     DESTINATION_DIR=$3
@@ -52,10 +52,16 @@ install_dotfiles() {
   fi
   PREFIX=$1
   SOURCE_FILES=$2
+  NO_PREPENDED_DOT=$4
 
   for file in $SOURCE_FILES
   do
-    DESTINATION_FILE_PATH="${DESTINATION_DIR}/.${file}"
+    if [ -n "${NO_PREPENDED_DOT}" ]; then
+      DESTINATION_FILE_PATH="${DESTINATION_DIR}/${file}"
+    else
+      DESTINATION_FILE_PATH="${DESTINATION_DIR}/.${file}"
+    fi
+
     SOURCE_FILE_PATH="${BASE_DIR}/${PREFIX}/${file}"
     if [ -e ${DESTINATION_FILE_PATH} ]; then
       check_file_difference "${DESTINATION_FILE_PATH}" "${SOURCE_FILE_PATH}"
@@ -73,7 +79,7 @@ install_dotfiles() {
 
 install_vim_dotfiles() {
   install_dotfiles "vim" "vimrc"
-  install_dotfiles "nvim" "init.vim" "${HOME}/.config/nvim"
+  install_dotfiles "nvim" "init.vim" "${HOME}/.config/nvim" "Y"
 }
 
 install_screen_dotfiles() {
