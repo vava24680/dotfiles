@@ -244,3 +244,9 @@ noremap <silent> <leader>rn   :setlocal relativenumber!<CR>
 " 3. Configurations
 "" 3.1 Autocmds
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4
+
+"" 3.2 Cursor shape
+if has('nvim')
+  " Set the cursor shape to a block without blinking
+  set guicursor=a:block-blinkon0
+endif
