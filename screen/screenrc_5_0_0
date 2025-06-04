@@ -1,0 +1,45 @@
+# Screen configurations only available above version 5.0.0.
+
+################################################################################################
+# %{= 2;0}          : Set colors to green on black and keep current style.
+# [                 : Opening bracket.
+# %H                : Hostname
+# ]                 : Closing bracket.
+# [                 : Opening bracket.
+# %=                : Expand to fill spaces (used to keep the following content centered).
+# %{= 7;0}          : Set colors to white on black and keep current style.
+# %-Lw              : Show the numbers and names of all the windows before the current window.
+#                     '-' is a qualifier, it means all the windows before the current window.
+#                     'L' is a qualifier, it makes the window flags are shown too.
+# %{=b 1;0}         : Set colors to red on black, bold text and keep current style.
+# (                 : Opening bracket.
+# %{=b 3;0}         : Set colors to yellow on black, bold text and keep current style.
+# %n                : The current window number.
+# %f                : Flags of the current window.
+# %t                : The title of the current windows.
+# *                 : The asterisk character.
+# %{=b 1;0}         : Set colors to red on black, bold text and keep current style.
+# )                 : Closing bracket.
+# %{= 7;0}          : Set colors to white on black and keep current style.
+# Reference for (^H): https://savannah.gnu.org/bugs/?67116
+# %+Lw              : Show the numbers and names of all the windows after the current window.
+#                     '+' is a qualifier, it means all the windows after the current window.
+#                     'L' is a qualifier, it makes the window flags are shown too.
+# %=                : Expand to fill spaces (used to keep the previous content centered).
+# %{= 2;0}          : Set colors to green on black and keep current style.
+# ]                 : Closing bracket.
+# [                 : Opening bracket.
+# %Y                : Full year number, e.g.: 2020.
+# %m                : Month number, e.g.: 08.
+# -                 : The hyphen character.
+# %d                : Day number, e.g.: 01.
+# %D                : Weekday, e.g.: Sat.
+# %c                : Current time in 24h format, e.g.: 10:51.
+# ]                 : Closing bracket.
+################################################################################################
+# hardstatus string '%{= 2;0}[HN: %H][%=%{= 7;0}%-Lw%{=b 1;0}(%{=b 3;0}%n %f %t *%{=b 1;0})%{= 7;0} ^H%+Lw%=%{= 2;0}][%y-%m-%d %D %c]'
+
+# Enable truecolor support.
+truecolor on
+
+# vim:ft=screen

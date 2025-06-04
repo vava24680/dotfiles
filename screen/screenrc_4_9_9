@@ -1,0 +1,42 @@
+# Screen configurations only available under version 5.0.0.
+
+#####################################################################################
+# %{= kg}: Set colors to green on black and keep current style.
+# [      : Opening bracket.
+# %H     : Hostname
+# ]      : Closing bracket.
+# [      : Opening bracket.
+# %=     : Expand to fill spaces (used to keep the following content centered).
+# %{= kw}: Set colors to white on black and keep current style.
+# ]      : Closing bracket.
+# %-Lw   : Show the numbers and names of all the windows before the current window.
+#          '-' is a qualifier, it means all the windows before the current window.
+#          'L' is a qualifier, it makes the window flags are shown too.
+# %{=b kR}: Set colors to bright red on black, bold text and keep current style.
+# (       : Opening bracket.
+# %{=b kY}: Set colors to bright yellow on black, bold text and keep current style.
+# %n      : The current window number.
+# %f      : Flags of the current window.
+# %t      : The title of the current windows.
+# *       : The asterisk character.
+# %{=b kR}: Set colors to bright red on black, bold text and keep current style.
+# )       : Closing bracket.
+# %{= kw} : Set colors to white on black and keep current style.
+# %+Lw    : Show the numbers and names of all the windows after the current window.
+#           '+' is a qualifier, it means all the windows after the current window.
+#           'L' is a qualifier, it makes the window flags are shown too.
+# %=      : Expand to fill spaces (used to keep the previous content centered).
+# %{= kg} : Set colors to green on black and keep current style.
+# [       : Opening bracket.
+# %Y      : Full year number, e.g.: 2020.
+# %m      : Month number, e.g.: 08.
+# -       : The hyphen character.
+# %d      : Day number, e.g.: 01.
+# %D      : Weekday, e.g.: Sat.
+# %c      : Current time in 24h format, e.g.: 10:51.
+# ]       : Closing bracket.
+#####################################################################################
+# Old formats for hardstatus string.
+hardstatus string '%{= kg}[HN: %H][%=%{= kw}%-Lw%{=b kR}(%{=b kY}%n %f %t *%{=b kR})%{= kw}%+Lw%=%{= kg}][%Y-%m-%d %D %c]'
+
+# vim:ft=screen

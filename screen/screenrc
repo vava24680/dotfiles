@@ -1,37 +1,20 @@
-# GNU Screen configuration
-
-# Enable alternative screen
+# Enable alternate screen feature.
 altscreen on
 
-# Set the default window encoding
+# Set the default window encoding to UTF-8.
 defencoding UTF-8
 
-# Set the default number of scrollback lines to 2500
-defscrollback 2500
+# Set the default number of scrollback lines to 25000.
+defscrollback 25000
 
-# Always show custom status information at the lastline
+# Always show custom status information at the status line.
 hardstatus alwayslastline
-#################
-# %H: Hostname
-# %-Lw: Show the numbers and names of all the windows before the current window.
-#       '-' is a qualifier, it means all the windows before the current window.
-#       'L' is a qualifier, it makes the window flags are shown too.
-# %n: The current window number.
-# %f: Flags of the current window.
-# %t: The title of the current windows.
-# %+Lw: Show the numbers and names of all the windows after the current window.
-#       '+' is a qualifier, it means all the windows after the current window.
-#       'L' is a qualifier, it makes the window flags are shown too.
-# %=: Pad the string. Two '%=' makes the each group of window number and name
-#     be aligned in the cetner.
-# %Y: Full year number, e.g.: 2020.
-# %m: Month number, e.g.: 08.
-# %d: Day number, e.g.: 01.
-# %D: Weekday, e.g.: Sat.
-# %c: Current time in 24h format, e.g.: 10:51.
-######################################################
-hardstatus string '%{= kG} [ HN: %H ][%{= kw}%= %?%-Lw%?%{= kR}(%{= kY}%n %f %t *%{= kR})%{= kw}%?%+Lw%?%= %{= kG}]%{= kG}[ %Y-%m-%d %D %c]'
-# hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
 
 # Set the term to screen-256color
 term screen-256color
+
+# Uncomment the following line if your screen version is less than 5.0.0.
+source $HOME/.screenrc_4_9_9
+
+# Uncomment the following line if your screen version is equal to or greater than 5.0.0.
+# source $HOME/.screenrc_5_0_0
