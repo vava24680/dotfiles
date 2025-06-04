@@ -30,9 +30,6 @@ set encoding=utf-8
 
 " Set encoding for showing contents on terminals to UTF-8.
 set termencoding=utf-8
-
-" Set writing file encoding to UTF-8.
-set fileencoding=utf-8
 " }}}
 
 " 2.3 Colors {{{2
