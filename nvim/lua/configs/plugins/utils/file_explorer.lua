@@ -98,40 +98,40 @@ if vim.fn.has('nvim-0.9.0') == 1 then
 
           -- Custom mappings
           vim.keymap.set(
-          'n',
-          '<C-t>',
-          api.tree.change_root_to_parent,
-          ops_nowait('Up')
+            'n',
+            '<C-t>',
+            api.tree.change_root_to_parent,
+            ops_nowait('Up')
           )
           vim.keymap.set(
-          'n',
-          '?',
-          api.tree.toggle_help,
-          ops_nowait('Help')
+            'n',
+            '?',
+            api.tree.toggle_help,
+            ops_nowait('Help')
           )
           vim.keymap.set(
-          'n',
-          'i',
-          api.node.open.horizontal,
-          ops_nowait('Open Horizontal split')
+            'n',
+            'i',
+            api.node.open.horizontal,
+            ops_nowait('Open Horizontal split')
           )
           vim.keymap.set(
-          'n',
-          '<C-]>',
-          api.tree.change_root_to_node,
-          ops_nowait('Change root to current directory')
+            'n',
+            '<C-]>',
+            api.tree.change_root_to_node,
+            ops_nowait('Change root to current directory')
           )
           vim.keymap.set(
-          'n',
-          't',
-          api.node.open.tab,
-          ops_wait('Open in new tab')
+            'n',
+            't',
+            api.node.open.tab,
+            ops_wait('Open in new tab')
           )
           vim.keymap.set(
-          'n',
-          'T',
-          wrap_function(api.node.open.tab, nil, {focus=false}),
-          ops_nowait('Open in new tab silently')
+            'n',
+            'T',
+            wrap_function(api.node.open.tab, nil, {focus=false}),
+            ops_nowait('Open in new tab silently')
           )
         end
 
@@ -161,7 +161,11 @@ else
         vim.g.NERDTreeCaseSensitiveSort = 1
 
         -- Make NERDTree filter out some temporary files.
-        vim.g.NERDTreeIgnore            = '[\'\\.swp$\', \'\\.pyc$\', \'__pycache__\']'
+        vim.g.NERDTreeIgnore            = {
+          '\\.swp$',
+          '\\.pyc$',
+          '__pycache__',
+        }
 
         -- Enable natural sorting order.
         vim.g.NERDTreeNaturalSort       = 1
