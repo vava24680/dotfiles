@@ -49,27 +49,4 @@ utils.add_custom_highlight_command_as_autocmd(
   'highlight! link SpecialKey NonText'
 )
 -- }}}
-
--- Highlight leading and trailing spaces and tabs with warning color. {{{2
-utils.add_custom_highlight_command_as_autocmd(
-  table.concat(
-    {
-      'highlight LeadingTrailingSpace ',
-      'ctermbg=Yellow ctermfg=Black ',
-      'guibg=Yellow guifg=Black',
-    },
-    ' '
-  )
-)
--- }}}
-
--- Link TrailingSpace and LeadingSpace these two highlight groups {{{2
--- to LeadingTrailingSpace.
-utils.add_custom_highlight_command_as_autocmd(
-  'highlight! link TrailingSpace LeadingTrailingSpace'
-)
-utils.add_custom_highlight_command_as_autocmd(
-  'highlight! link LeadingSpace LeadingTrailingSpace'
-)
--- }}}
 -- }}}
