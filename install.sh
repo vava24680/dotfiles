@@ -35,7 +35,7 @@ link_file() {
     # This check is needed when destination is symbolic link to a directory that
     # is actually the target. Without this check, ln will create another symbolic
     # link in the target directory, which is not what we want.
-    [ -h $DESTINATION ] && unlink $2
+    [ -h $DESTINATION ] && unlink $DESTINATION
 
     ln -f -s $1 $2
 }
