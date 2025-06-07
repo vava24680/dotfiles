@@ -30,6 +30,13 @@ link_file() {
 
     TARGET=$1
     DESTINATION=$2
+
+    # If destination already exists and it is a symbolic link, unlink it first.
+    # This check is needed when destination is symbolic link to a directory that
+    # is actually the target. Without this check, ln will create another symbolic
+    # link in the target directory, which is not what we want.
+    [ -h $DESTINATION ] && unlink $2
+
     ln -f -s $1 $2
 }
 
@@ -61,7 +68,19 @@ install_dotfiles() {
     if [ ! -z "$2" ]; then
         SOURCE_FILES=$2
     else
-        SOURCE_FILES=$(find ${SOURCE_DIRECTORY} -mindepth 1 -maxdepth 1 -printf "%f\n")
+        SOURCE_FILES=""
+
+        # As BSD find does not support -printf option, use shell's built-in
+        # parameter expansion to extract the basename part (the part after
+        # the last /) from each search result.
+        for file in $(find ${SOURCE_DIRECTORY} -mindepth 1 -maxdepth 1)
+        do
+            if [ -z "${SOURCE_FILES}" ]; then
+                SOURCE_FILES="${file##/*/}"
+            else
+                SOURCE_FILES="${SOURCE_FILES} ${file##/*/}"
+            fi
+        done
     fi
 
     if [ "$3" != "Y" -a "$3" != "N" -a "$3" != "" ]; then
@@ -95,7 +114,14 @@ install_dotfiles() {
         if [ -e $DESTINATION_FILE_PATH ]; then
             BACKUP_FILE_FLAG=1
 
-            if [ -f $DESTINATION_FILE_PATH ]; then
+            if [ -d $DESTINATION_FILE_PATH ]; then
+                # If destination file is a diectory, use realpath to check
+                # if the source directory and the destination directory.
+                # If they are the same, do not proceed backup procedure.
+                if [ $(realpath $DESTINATION_FILE_PATH) = $(realpath $SOURCE_FILE_PATH) ]; then
+                    BACKUP_FILE_FLAG=0
+                fi
+            elif [ -f $DESTINATION_FILE_PATH ]; then
                 check_file_difference "${DESTINATION_FILE_PATH}" "${SOURCE_FILE_PATH}"
 
                 RETURN_VALUE=$?
